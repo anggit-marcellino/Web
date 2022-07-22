@@ -170,7 +170,7 @@
           <Property Name="Status" Type="Int32" />
           <Property Name="TotalCnt" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WebAngularEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Dosens" EntityType="Self.Dosen" />
           <EntitySet Name="Mahasiswas" EntityType="Self.Mahasiswa" />
           <EntitySet Name="Prodis" EntityType="Self.Prodi" />
@@ -206,7 +206,7 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="Usp_Login">
+          <FunctionImport Name="Usp_Login" ReturnType="Collection(WebAngularModel.Usp_Login_Result)">
             <Parameter Name="UserName" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
@@ -222,12 +222,23 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="Usp_Login_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="LoginName" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="ContactNo" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="1" />
+          <Property Type="Int32" Name="IsApporved" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WebAngularModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="WebAngularModelStoreContainer" CdmEntityContainer="WebAngularEntities1">
           <EntitySetMapping Name="Dosens">
             <EntityTypeMapping TypeName="WebAngularModel.Dosen">
               <MappingFragment StoreEntitySet="Dosens">
@@ -316,7 +327,21 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WebAngularModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WebAngularModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="Usp_Login" FunctionName="WebAngularModel.Store.Usp_Login" />
+          <FunctionImportMapping FunctionImportName="Usp_Login" FunctionName="WebAngularModel.Store.Usp_Login">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebAngularModel.Usp_Login_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IsApporved" ColumnName="IsApporved" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
