@@ -15,10 +15,10 @@ namespace WebAPI.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities : DbContext
+    public partial class WebAngularEntities1 : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public WebAngularEntities1()
+            : base("name=WebAngularEntities1")
         {
         }
     
@@ -136,7 +136,7 @@ namespace WebAPI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual int Usp_Login(string userName, string password)
+        public virtual ObjectResult<Usp_Login_Result> Usp_Login(string userName, string password)
         {
             var userNameParameter = userName != null ?
                 new ObjectParameter("UserName", userName) :
@@ -146,7 +146,7 @@ namespace WebAPI.Models
                 new ObjectParameter("Password", password) :
                 new ObjectParameter("Password", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Usp_Login", userNameParameter, passwordParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_Login_Result>("Usp_Login", userNameParameter, passwordParameter);
         }
     }
 }
