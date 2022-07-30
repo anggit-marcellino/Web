@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
-using System.Web.Mvc;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [System.Web.Http.RoutePrefix("Api/Mahasiswa")]
+    [RoutePrefix("Api/Mahasiswa")]
     public class MahasiswaController : ApiController
     {
         private WebAngularEntities1 objEntity = new WebAngularEntities1();
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("AllMahasiswas")]
+        [HttpGet]
+        [Route("AllMahasiswas")]
         public IQueryable<Mahasiswa> GetMahasiswa()
         {
             try
@@ -26,8 +23,8 @@ namespace WebAPI.Controllers
             }
         }
 
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("Prodi")]
+        [HttpGet]
+        [Route("Prodi")]
         public IQueryable<Prodi> GetProdi()
         {
             try
@@ -40,8 +37,8 @@ namespace WebAPI.Controllers
             }
         }
 
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("GetMahasiswasById/{mahasiswaId}")]
+        [HttpGet]
+        [Route("GetMahasiswasById/{mahasiswaId}")]
         public IHttpActionResult GetMahasiswaById(string mahasiswaId)
         {
             Mahasiswa objMah = new Mahasiswa();
@@ -61,8 +58,8 @@ namespace WebAPI.Controllers
             return Ok(objMah);
         }
 
-        [System.Web.Http.HttpPost]
-        [System.Web.Http.Route("InsertMahasiswas")]
+        [HttpPost]
+        [Route("InsertMahasiswas")]
         public IHttpActionResult PostMahasiswa(Mahasiswa data)
         {
             if (!ModelState.IsValid)
@@ -80,8 +77,8 @@ namespace WebAPI.Controllers
             }
             return Ok(data);
         }
-        [System.Web.Http.HttpPut]
-        [System.Web.Http.Route("UpdateMahasiswas")]
+        [HttpPut]
+        [Route("UpdateMahasiswas")]
         public IHttpActionResult PutDosen(Mahasiswa mahasiswa)
         {
             if (!ModelState.IsValid)
@@ -111,8 +108,8 @@ namespace WebAPI.Controllers
             return Ok(mahasiswa);
         }
 
-        [System.Web.Http.HttpDelete]
-        [System.Web.Http.Route("DeleteMahasiswas")]
+        [HttpDelete]
+        [Route("DeleteMahasiswas")]
         public IHttpActionResult DeleteMahasiswa(int id)
         {
             Mahasiswa mahasiswa = objEntity.Mahasiswas.Find(id);

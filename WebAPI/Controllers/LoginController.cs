@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Linq;
-using System.Web.Mvc;
-using WebAPI.Models;
 using System.Web.Http;
-using System.Net;
-using System.Net.Http;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
     public class LoginController : ApiController
     {
         //For user login  
-        [System.Web.Http.Route("Api/Login/UserLogin")]
-        [System.Web.Http.HttpPost]
+        [Route("Api/Login/UserLogin")]
+        [HttpPost]
         public Response Login(Login Lg)
         {
             WebAngularEntities1 DB = new WebAngularEntities1();
@@ -34,8 +31,8 @@ namespace WebAPI.Controllers
             };
         }
         //For new user Registration  
-        [System.Web.Http.Route("Api/Login/UserRegistration")]
-        [System.Web.Http.HttpPost]
+        [Route("Api/Login/UserRegistration")]
+        [HttpPost]
         public object createcontact(Registration Lvm)
         {
             try

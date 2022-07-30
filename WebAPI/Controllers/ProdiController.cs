@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Http;
-using System.Web.Mvc;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [System.Web.Http.RoutePrefix("Api/Prodi")]
+    [RoutePrefix("Api/Prodi")]
     public class ProdiController : ApiController
     {
         private WebAngularEntities1 objEntity = new WebAngularEntities1();
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("AllProdis")]
+        [HttpGet]
+        [Route("AllProdis")]
         public IQueryable<Prodi> GetProdis()
         {
             try
@@ -23,8 +22,8 @@ namespace WebAPI.Controllers
                 throw;
             }
         }
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("GetProdisById/{ProdiId}")]
+        [HttpGet]
+        [Route("GetProdisById/{ProdiId}")]
         public IHttpActionResult GetProdiById(string ProdiId)
         {
             Prodi objPro = new Prodi();
@@ -43,8 +42,8 @@ namespace WebAPI.Controllers
             }
             return Ok(objPro);
         }
-        [System.Web.Http.HttpPost]
-        [System.Web.Http.Route("InsertProdis")]
+        [HttpPost]
+        [Route("InsertProdis")]
         public IHttpActionResult PostProdis(Prodi data)
         {
             if (!ModelState.IsValid)
@@ -62,8 +61,8 @@ namespace WebAPI.Controllers
             }
             return Ok(data);
         }
-        [System.Web.Http.HttpPut]
-        [System.Web.Http.Route("UpdateProdis")]
+        [HttpPut]
+        [Route("UpdateProdis")]
         public IHttpActionResult PutProdis(Prodi prodi)
         {
             if (!ModelState.IsValid)
@@ -86,11 +85,10 @@ namespace WebAPI.Controllers
             }
             return Ok(prodi);
         }
-        [System.Web.Http.HttpDelete]
-        [System.Web.Http.Route("DeleteProdis")]
+        [HttpDelete]
+        [Route("DeleteProdis")]
         public IHttpActionResult DeleteProdi(int id)
         {
-            //int empId = Convert.ToInt32(id);  
             Prodi prodi = objEntity.Prodis.Find(id);
             if (prodi == null)
             {
@@ -100,5 +98,5 @@ namespace WebAPI.Controllers
             objEntity.SaveChanges();
             return Ok(prodi);
         }
-    } 
+    }
 }
