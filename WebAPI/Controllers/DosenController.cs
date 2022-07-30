@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
-using System.Web.Mvc;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [System.Web.Http.RoutePrefix("Api/Dosen")]
+    [RoutePrefix("Api/Dosen")]
     public class DosenController : ApiController
     {
 
         private WebAngularEntities1 objEntity = new WebAngularEntities1();
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("AllDosens")]
+        [HttpGet]
+        [Route("AllDosens")]
         public IQueryable<Dosen> GetDosen()
         {
             try
@@ -27,8 +24,8 @@ namespace WebAPI.Controllers
             }
         }
 
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("Prodi")]
+        [HttpGet]
+        [Route("Prodi")]
         public IQueryable<Prodi> GetProdi()
         {
             try
@@ -41,8 +38,8 @@ namespace WebAPI.Controllers
             }
         }
 
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("GetDosensById/{dosenId}")]
+        [HttpGet]
+        [Route("GetDosensById/{dosenId}")]
         public IHttpActionResult GetDosenById(string dosenId)
         {
             Dosen objDos = new Dosen();
@@ -62,8 +59,8 @@ namespace WebAPI.Controllers
             return Ok(objDos);
         }
 
-        [System.Web.Http.HttpPost]
-        [System.Web.Http.Route("InsertDosens")]
+        [HttpPost]
+        [Route("InsertDosens")]
         public IHttpActionResult PostDosen(Dosen data)
         {
             if (!ModelState.IsValid)
@@ -81,8 +78,8 @@ namespace WebAPI.Controllers
             }
             return Ok(data);
         }
-        [System.Web.Http.HttpPut]
-        [System.Web.Http.Route("UpdateDosens")]
+        [HttpPut]
+        [Route("UpdateDosens")]
         public IHttpActionResult PutDosen(Dosen dosen)
         {
             if (!ModelState.IsValid)
@@ -112,10 +109,10 @@ namespace WebAPI.Controllers
             return Ok(dosen);
         }
 
-        [System.Web.Http.HttpDelete]
-        [System.Web.Http.Route("DeleteDosens")]
+        [HttpDelete]
+        [Route("DeleteDosens")]
         public IHttpActionResult DeleteDosen(int id)
-        {  
+        {
             Dosen dosen = objEntity.Dosens.Find(id);
             if (dosen == null)
             {
