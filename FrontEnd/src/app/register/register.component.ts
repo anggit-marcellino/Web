@@ -41,7 +41,11 @@ export class RegisterComponent implements OnInit {
 
     register() {
       const user = this.registerForm.value;
+<<<<<<< HEAD
+      this.createMahasiswa(user);
+=======
       this.createUser(user);
+>>>>>>> 768a1113ae7334ebc858bdbc5add19a175592325
       let snackBarRef = this.snackBar.open('Registerd Successfully!',
       'Got it!', {
           duration: 3000,
@@ -50,7 +54,11 @@ export class RegisterComponent implements OnInit {
       });
     }
 
+<<<<<<< HEAD
+    createMahasiswa(register: Register) {
+=======
     createUser(register: Register) {
+>>>>>>> 768a1113ae7334ebc858bdbc5add19a175592325
       this.loginService.CreateUser(register).subscribe(
         (x) => {
         this.data = true;

@@ -1,1 +1,76 @@
-<p>add-mhs works!</p>
+<div class="d-flex justify-content-between">
+  <h4>Add New Mahasiswa</h4>
+  <button mat-button (click)="onClose()">
+      <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div class="mt-4 input-group">
+  <div class="input-group-prepend">
+      <span class="input-group-text">Nim</span>
+  </div>
+  <input required minlength="2" type="text" class="form-control" name="Nim" #Phone="ngModel"
+      [(ngModel)]="service.formData.Nim" />
+</div>
+
+<div style="overflow: auto; height: 450px;">
+  <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+      <div class="mt-4 input-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text">Mahasiswa Name</span>
+          </div>
+          <input required minlength="2" type="text" class="form-control" name="MahasiswaName" #MahasiswaName="ngModel"
+              [(ngModel)]="service.formData.MahasiswaName" />
+      </div>
+
+      <div class="mt-4 input-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text">Prodi</span>
+          </div>
+          <select required class="form-control" name="Department" #Prodi="ngModel"
+              [(ngModel)]="service.formData.Prodi">
+              <option *ngFor="let dl of listItems" [value]="dl">
+                  {{dl}}
+              </option>
+          </select>
+      </div>
+
+      <div class="mt-4 input-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text">MailID</span>
+          </div>
+          <input required minlength="2" type="text" class="form-control" name="MailID" #MailID="ngModel"
+              [(ngModel)]="service.formData.MailID" />
+      </div>
+
+      <div class="mt-4 input-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text">Registered Date</span>
+          </div>
+          <input required [matDatepicker]="picker" type="text" class="form-control" name="DOJ" #RegisteredDate="ngModel"
+              [(ngModel)]="service.formData.RegisteredDate" />
+          <mat-datepicker-toggle matsuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </div>
+
+      <div class="mt-4 input-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text">Age</span>
+          </div>
+          <input required minlength="2" type="text" class="form-control" name="Age" #Age="ngModel"
+              [(ngModel)]="service.formData.Age" />
+      </div>
+
+      <div class="mt-4 input-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text">Address</span>
+          </div>
+          <input required minlength="2" type="text" class="form-control" name="Address" #Address="ngModel"
+              [(ngModel)]="service.formData.Address" />
+      </div>
+
+      <button class="mt-4" mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          Add Mahasiswa
+      </button>
+  </form>
+</div>

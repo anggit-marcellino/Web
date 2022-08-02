@@ -11,7 +11,7 @@ namespace WebAPI.Controllers
         private WebAngularEntities1 objEntity = new WebAngularEntities1();
         [HttpGet]
         [Route("AllProdis")]
-        public IQueryable<Prodi> GetProdis()
+        public IQueryable<Prodi> GetProdi()
         {
             try
             {
@@ -44,7 +44,7 @@ namespace WebAPI.Controllers
         }
         [HttpPost]
         [Route("InsertProdis")]
-        public IHttpActionResult PostProdis(Prodi data)
+        public IHttpActionResult PostProdi(Prodi data)
         {
             if (!ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace WebAPI.Controllers
         }
         [HttpPut]
         [Route("UpdateProdis")]
-        public IHttpActionResult PutProdis(Prodi prodi)
+        public IHttpActionResult PutProdi(Prodi prodi)
         {
             if (!ModelState.IsValid)
             {
