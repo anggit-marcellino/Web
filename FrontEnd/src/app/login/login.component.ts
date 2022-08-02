@@ -23,7 +23,11 @@ import { Register } from '../models/register';
       public snackBar: MatSnackBar,
     )   { }
 
+<<<<<<< HEAD
     ngOnInit() {
+=======
+    ngOnInit(): void {
+>>>>>>> 768a1113ae7334ebc858bdbc5add19a175592325
 
     this.loginForm = this.fb.group({
       UserName: [null, [Validators.required]],
