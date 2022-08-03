@@ -21,7 +21,6 @@ import { DeleteMhsComponent } from '../delete-mhs/delete-mhs.component';
 })
 export class ShowMhsComponent implements OnInit {
 
-
   constructor(private service: MahasiswaService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
@@ -113,18 +112,20 @@ export class ShowMhsComponent implements OnInit {
         return true;
       }
     };
-    const pdfTable = this.pdfTable.nativeElement;
-    doc.fromHTML(pdfTable.innerHTML, 15, 15, {
-      width: 190,
-      'elementHandlers': specialElementHandlers
-    });
-    doc.save('tableToPdf.pdf');
-  }
-
-  exportToExcel() {
-    const workSheet = XLSX.utils.json_to_sheet(this.listData.data, { header: ['dataprop1', 'dataprop2'] });
-    const workBook: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workBook, workSheet, 'SheetName');
-    XLSX.writeFile(workBook, 'filename.xlsx');
   }
 }
+    //const pdfTable = this.pdfTable.nativeElement;
+   // doc.Fromhtml(pdfTable.innerHTML, 15, 15, {
+    //  width: 190,
+    //  'elementHandlers': specialElementHandlers
+   // });
+  //  doc.save('tableToPdf.pdf');
+ // }
+
+ // exportToExcel() {
+  //  const workSheet = XLSX.utils.json_to_sheet(this.listData.data, { header: ['dataprop1', 'dataprop2'] });
+  //  const workBook: XLSX.WorkBook = XLSX.utils.book_new();
+  //  XLSX.utils.book_append_sheet(workBook, workSheet, 'SheetName');
+  //  XLSX.writeFile(workBook, 'filename.xlsx');
+  //}
+
