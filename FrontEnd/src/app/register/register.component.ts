@@ -60,6 +60,16 @@ export class RegisterComponent implements OnInit {
       });
     }
 
+    createDosen(register: Register) {
+      this.loginService.CreateUser(register).subscribe(
+        (x) => {
+        this.data = true;
+        this.router.navigate(['/login']);
+        this.massage = 'Data saved Successfully';
+        this.registerForm.reset();
+      });
+    }
+
   cancel() {
     this.router.navigate(['/register']);
   }

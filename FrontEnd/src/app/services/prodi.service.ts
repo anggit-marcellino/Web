@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProdiService {
+  formData: { ProdiId: number; ProdiName: string; ChairmanProdi: string; };
 
   constructor(private http:HttpClient) { }
   readonly APIUrl ='http://localhost:55075/api/Prodi';
