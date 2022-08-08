@@ -12,15 +12,16 @@ namespace WebAPI
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
-            // Web API routes
             config.MapHttpAttributeRoutes();
 
+            // Web API routes
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+                      name: "DefaultApi",
+                      routeTemplate: "api/{controller}/{action}/{id}",
+                      defaults: new
+                      {
+                          id = RouteParameter.Optional,
+                      });
 
             // for JSON data into test data in POSTMAN 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(
